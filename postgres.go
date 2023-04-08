@@ -152,7 +152,7 @@ func (dialector Dialector) DataTypeOf(field *schema.Field) string {
 	case schema.Bool:
 		return "boolean"
 	case schema.Int, schema.Uint:
-		return "bigint"
+		return "decimal"
 		/*		size := field.Size
 				if field.DataType == schema.Uint {
 					size++
