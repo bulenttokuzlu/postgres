@@ -152,29 +152,30 @@ func (dialector Dialector) DataTypeOf(field *schema.Field) string {
 	case schema.Bool:
 		return "boolean"
 	case schema.Int, schema.Uint:
-		size := field.Size
-		if field.DataType == schema.Uint {
-			size++
-		}
-		if field.AutoIncrement {
-			switch {
-			case size <= 16:
-				return "smallserial"
-			case size <= 32:
-				return "serial"
-			default:
-				return "bigserial"
-			}
-		} else {
-			switch {
-			case size <= 16:
-				return "smallint"
-			case size <= 32:
-				return "integer"
-			default:
-				return "bigint"
-			}
-		}
+		return "bigint"
+		/*		size := field.Size
+				if field.DataType == schema.Uint {
+					size++
+				}
+				if field.AutoIncrement {
+					switch {
+					case size <= 16:
+						return "smallserial"
+					case size <= 32:
+						return "serial"
+					default:
+						return "bigserial"
+					}
+				} else {
+					switch {
+					case size <= 16:
+						return "smallint"
+					case size <= 32:
+						return "integer"
+					default:
+						return "bigint"
+					}
+				}*/
 	case schema.Float:
 		if field.Precision > 0 {
 			if field.Scale > 0 {
