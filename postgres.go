@@ -235,9 +235,11 @@ func (dialector Dialector) RollbackTo(tx *gorm.DB, name string) error {
 func getSerialDatabaseType(s string) (dbType string, ok bool) {
 	switch s {
 	case "smallserial":
-		return "smallint", true
-	case "serial":
+		//return "smallint", true
 		return "integer", true
+	case "serial":
+		//return "integer", true
+		return "bigint", true
 	case "bigserial":
 		return "bigint", true
 	default:
